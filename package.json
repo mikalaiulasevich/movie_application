@@ -1,0 +1,40 @@
+{
+  "name": "test",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "prepare-device": "./scripts/adb-all.sh reverse tcp:8081 tcp:8081 && ./scripts/adb-all.sh reverse tcp:9090 tcp:9090 && ./scripts/adb-all.sh reverse tcp:8080 tcp:8080 && ./scripts/adb-all.sh reverse tcp:8097 tcp:8097",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@nozbe/watermelondb": "^0.26.0",
+    "@nozbe/with-observables": "^1.6.0",
+    "axios": "^1.4.0",
+    "dayjs": "^1.11.8",
+    "lodash": "^4.17.21",
+    "react": "18.2.0",
+    "react-native": "0.69.4",
+    "react-native-fast-image": "^8.6.3",
+    "react-native-linear-gradient": "^2.7.3",
+    "react-native-navigation": "7.33.3-hotfix.3",
+    "react-native-reanimated": "^3.3.0",
+    "react-native-svg": "^13.9.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/plugin-proposal-decorators": "^7.22.5",
+    "@babel/runtime": "^7.12.5",
+    "@react-native-community/eslint-config": "^2.0.0",
+    "@tsconfig/react-native": "^3.0.2",
+    "@types/lodash": "^4.14.195",
+    "@types/react": "^18.2.13",
+    "@types/react-native": "^0.72.2",
+    "babel-plugin-module-resolver": "^5.0.0",
+    "eslint": "^7.32.0",
+    "metro-react-native-babel-preset": "^0.70.3",
+    "typescript": "^5.1.3"
+  }
+}
