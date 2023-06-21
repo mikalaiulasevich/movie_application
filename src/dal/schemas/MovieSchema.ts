@@ -43,4 +43,14 @@ export const MovieSchema: Array<ColumnSchema> = [
     name: 'genres',
     type: 'string',
   },
+  {
+    name: 'local_poster_path',
+    type: 'string',
+    isOptional: true,
+  },
+  {
+    name: 'local_backdrop_path',
+    type: 'string',
+    isOptional: true,
+  },
 ];

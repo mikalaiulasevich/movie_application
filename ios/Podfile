@@ -13,6 +13,9 @@ target 'Test' do
   flags = get_default_flags()
 
   pod 'simdjson', path: '../node_modules/@nozbe/simdjson', modular_headers: true
+  
+  pod 'react-native-blob-util',
+      :path => '../node_modules/react-native-blob-util'
 
   use_react_native!(
     :path => config[:reactNativePath],

@@ -23,13 +23,19 @@ import {COLORS, FONTS, PADDINGS} from '@organic/styles/constants';
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from '@organic/styles/dimensions';
 import {ROUTES} from '@organic/navigation/routes';
 
-import {Database} from '@organic/dal/Database';
-import {IMovie} from '@organic/dal/models/movie/interfaces/IMovie';
-import {TABLE_NAMES} from '@organic/dal/Tables';
 import {
   HORIZONTAL_ITEM_SIZE_WIDTH,
   MovieListItemHorizontal,
-} from 'features/movie/components/MovieListItemHorizontal';
+} from '@organic/features/movie/components/MovieListItemHorizontal';
+
+import {Database} from '@organic/dal/Database';
+import {IMovie} from '@organic/dal/models/movie/interfaces/IMovie';
+import {TABLE_NAMES} from '@organic/dal/Tables';
+
+import {
+  getBackdropImageSourceURIFromMovie,
+  getPosterImageSourceURIFromMovie,
+} from '@organic/utils/getNetworkImage';
 
 type SelectedMovieDetailsViewFCProperties = {
   readonly movies: Array<IMovie>;
@@ -55,6 +61,7 @@ const SelectedMovieDetailsViewFC: React.FC<
             // Text to edit in native view.
             text: movie.overview,
             // Image which loaded in native view bg and blurs.
+            // TODO: Add support to local image in Native View
             imageUrl: `https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`,
             // Callback on left button.
             onClose: (): Promise<string> => Navigation.pop(componentId),
@@ -151,7 +158,7 @@ const SelectedMovieDetailsViewFC: React.FC<
         blurRadius={20}
         style={styles.movieBackdrop}
         source={{
-          uri: `https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`,
+          uri: getBackdropImageSourceURIFromMovie(movie),
         }}>
         <LinearGradient
           colors={[
@@ -171,7 +178,7 @@ const SelectedMovieDetailsViewFC: React.FC<
                   nativeID={`poster_image_${movie.id}_destination`}
                   style={styles.posterImage}
                   source={{
-                    uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+                    uri: getPosterImageSourceURIFromMovie(movie),
                   }}
                 />
               </View>

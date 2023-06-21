@@ -11,4 +11,7 @@ export interface IMovie extends Model {
   popularity: number;
   release_date: string;
   genres: string;
+
+  local_poster_path: Nullable<string>;
+  local_backdrop_path: Nullable<string>;
 }

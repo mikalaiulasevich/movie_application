@@ -314,6 +314,8 @@ PODS:
   - React-jsinspector (0.69.4)
   - React-logger (0.69.4):
     - glog
+  - react-native-blob-util (0.18.3):
+    - React-Core
   - React-perflogger (0.69.4)
   - React-RCTActionSheet (0.69.4):
     - React-Core/RCTActionSheetHeaders (= 0.69.4)
@@ -489,6 +491,7 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
+  - react-native-blob-util (from `../node_modules/react-native-blob-util`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
@@ -576,6 +579,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   React-logger:
     :path: "../node_modules/react-native/ReactCommon/logger"
+  react-native-blob-util:
+    :path: "../node_modules/react-native-blob-util"
   React-perflogger:
     :path: "../node_modules/react-native/ReactCommon/reactperflogger"
   React-RCTActionSheet:
@@ -653,6 +658,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: a27badbbdbc0ff781813370736a2d1c7261181d4
   React-jsinspector: 8a3d3f5dcd23a91e8c80b1bf0e96902cd1dca999
   React-logger: 1088859f145b8f6dd0d3ed051a647ef0e3e80fad
+  react-native-blob-util: 2d36383bb52c15c5451be81cb7ddf22bc34a12a6
   React-perflogger: cb386fd44c97ec7f8199c04c12b22066b0f2e1e0
   React-RCTActionSheet: f803a85e46cf5b4066c2ac5e122447f918e9c6e5
   React-RCTAnimation: 19c80fa950ccce7f4db76a2a7f2cf79baae07fc7
@@ -677,6 +683,6 @@ SPEC CHECKSUMS:
   Yoga: ff994563b2fd98c982ca58e8cd9db2cdaf4dda74
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 2ce51deb322e81abb4c12bf02f647b244aae255b
+PODFILE CHECKSUM: 14a42141dbadb0686037a29b09f9902300a756e3
 
 COCOAPODS: 1.12.1

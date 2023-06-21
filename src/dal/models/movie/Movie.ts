@@ -30,9 +30,17 @@ export class Movie extends Model implements IMovie {
   @readonly
   public poster_path: string;
 
+  @field('local_poster_path')
+  @readonly
+  public local_poster_path: Nullable<string>;
+
   @field('backdrop_path')
   @readonly
   public backdrop_path: string;
+
+  @field('local_backdrop_path')
+  @readonly
+  public local_backdrop_path: Nullable<string>;
 
   @field('vote_count')
   @readonly

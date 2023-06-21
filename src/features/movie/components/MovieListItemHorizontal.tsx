@@ -28,6 +28,11 @@ import {COLORS, FONTS} from '@organic/styles/constants';
 import {SCREEN_WIDTH} from '@organic/styles/dimensions';
 import {ROUTES} from '@organic/navigation/routes';
 
+import {
+  getBackdropImageSourceURIFromMovie,
+  getPosterImageSourceURIFromMovie,
+} from '@organic/utils/getNetworkImage';
+
 type MovieListItemHorizontalProperties = {
   readonly item: IMovie;
   readonly index: number;
@@ -93,7 +98,7 @@ export const MovieListItemHorizontal: React.FC<MovieListItemHorizontalProperties
           nativeID={`poster_image_${item.id}`}
           style={styles.rowImage}
           source={{
-            uri: `https://image.tmdb.org/t/p/w500${item.poster_path}`,
+            uri: getPosterImageSourceURIFromMovie(item),
           }}
         />
       </View>
@@ -105,7 +110,7 @@ export const MovieListItemHorizontal: React.FC<MovieListItemHorizontalProperties
         blurRadius={10}
         imageStyle={styles.movieDetails}
         source={{
-          uri: `https://image.tmdb.org/t/p/w500${item.backdrop_path}`,
+          uri: getBackdropImageSourceURIFromMovie(item),
         }}
         style={styles.movieDetails}>
         <LinearGradient

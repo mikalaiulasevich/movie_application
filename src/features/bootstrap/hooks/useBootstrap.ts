@@ -8,6 +8,7 @@ import {useDatabaseCollections} from '@organic/dal/hooks/useDatabaseCollections'
 
 import {getGenres} from '@organic/connectivity/api/genres';
 import {getMovies} from '@organic/connectivity/api/movies';
+import {getNetworkImage} from '@organic/utils/getNetworkImage';
 
 import {IMovie} from '@organic/dal/models/movie/interfaces/IMovie';
 
@@ -63,6 +64,15 @@ export function useBootstrap(): BootstrapState {
               g => (g && g.name) || '',
             );
 
+            const [localPosterPath, localBackdropPath] = await Promise.all([
+              getNetworkImage(movie.poster_path, `movie_${movie.id}_poster`),
+              getNetworkImage(
+                movie.backdrop_path,
+                `movie_${movie.id}_backdrop`,
+                'w1280',
+              ),
+            ]);
+
             const movieToSave: IMovie = await movies.prepareCreate(_movie => {
               _movie.original_language = movie.original_language;
               _movie.original_title = movie.original_title;
@@ -73,6 +83,8 @@ export function useBootstrap(): BootstrapState {
               _movie.vote_count = movie.vote_count;
               _movie.vote_average = movie.vote_average;
               _movie.release_date = movie.release_date;
+              _movie.local_poster_path = localPosterPath;
+              _movie.local_backdrop_path = localBackdropPath;
               _movie.genres = allGenresOfMovie.toString();
             });
 

@@ -109,7 +109,7 @@ class NoteEditView: UIView {
       
       URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
         if let data = data, let image = UIImage(data: data) {
-          DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+          DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
                  let darkBlur = UIBlurEffect(style: .dark)
                  let blurView = UIVisualEffectView(effect: darkBlur)
                  blurView.frame = self?.bounds ?? .zero
