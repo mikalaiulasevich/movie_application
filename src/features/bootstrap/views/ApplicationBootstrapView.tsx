@@ -14,6 +14,7 @@ import {useBootstrap} from '@organic/features/bootstrap/hooks/useBootstrap';
 import {ROUTES} from '@organic/navigation/routes';
 import {COLORS, FONTS, PADDINGS} from '@organic/styles/constants';
 
+// Config for gradient from bottom to top. Ends in half of gradient height.
 const BACKGROUND_GRADIENT = {
   start: {x: 0.5, y: 0},
   end: {x: 0.5, y: 1},
@@ -29,6 +30,7 @@ export const ApplicationBootstrapView: React.FC<ApplicationBootstrapView> = ({
   const {isLoading} = useBootstrap();
 
   const handleStartPress = async () => {
+    // Navigate to Movies List View
     await Navigation.push(componentId, {
       component: {
         name: ROUTES.MOVIE.FEATURE_MOVIE_LIST,

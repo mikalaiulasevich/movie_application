@@ -10,6 +10,9 @@ type MoviePosterProperties = {
   readonly image: any;
 };
 
+/*
+   iImpl of Movie Poster. This Image impl used to load huge amount of pictures. Fast Image pretty fast and good solution to do this.
+ */
 export const MoviePoster: React.FC<MoviePosterProperties> = ({
   image,
 }): React.JSX.Element => {

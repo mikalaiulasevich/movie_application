@@ -19,6 +19,9 @@ type ButtonProperties = {
   readonly isLoading?: boolean;
 };
 
+/*
+   Simple impl of button with loader, disable state and touch handler.
+ */
 export const Button: React.FC<ButtonProperties> = ({
   title,
   onPress,
@@ -29,7 +32,7 @@ export const Button: React.FC<ButtonProperties> = ({
     <TouchableOpacity
       activeOpacity={0.65}
       style={styles.buttonContainer}
-      disabled={disabled}
+      disabled={disabled || isLoading}
       onPress={onPress}>
       {isLoading ? (
         <RadialLoader />

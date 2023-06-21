@@ -1,5 +1,6 @@
 import {ColumnSchema} from '@nozbe/watermelondb/Schema';
 
+// Schema for Movie model.
 export const MovieSchema: Array<ColumnSchema> = [
   // IMovie
   {
@@ -40,11 +41,6 @@ export const MovieSchema: Array<ColumnSchema> = [
   },
   {
     name: 'genres',
-    type: 'string',
-  },
-  // INotionable
-  {
-    name: 'text',
     type: 'string',
   },
 ];

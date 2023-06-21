@@ -8,6 +8,9 @@ type GenreChipProperties = {
   readonly title: string;
 };
 
+/*
+   Simple impl of Chip to display movie genre. Can be used in list.
+ */
 export const GenreChip: React.FC<GenreChipProperties> = ({
   title,
 }): React.JSX.Element => {

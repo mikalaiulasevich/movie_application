@@ -10,6 +10,5 @@ export interface IMovie extends Model {
   vote_average: number;
   popularity: number;
   release_date: string;
-  text: string;
   genres: string;
 }

@@ -1,11 +1,6 @@
 import React from 'react';
 
-import {StyleSheet, TouchableOpacity} from 'react-native';
-
-import Animated, {
-  useSharedValue,
-  useAnimatedStyle,
-} from 'react-native-reanimated';
+import {StyleSheet, TouchableOpacity, Image} from 'react-native';
 
 import {COLORS} from '@organic/styles/constants';
 
@@ -14,34 +9,16 @@ type IconButtonProperties = {
   readonly onPress: () => void;
 };
 
-const AnimatedTouchableOpacity =
-  Animated.createAnimatedComponent(TouchableOpacity);
-
 export const IconButton: React.FC<IconButtonProperties> = ({
   icon,
   onPress,
 }): React.JSX.Element => {
   const source = getImageSource(icon);
 
-  const scaleValue = useSharedValue(1);
-
-  const animatedStyle = useAnimatedStyle(() => {
-    return {
-      transform: [{scale: scaleValue.value}],
-    };
-  });
-
-  const handlePress = React.useCallback(() => {
-    onPress();
-  }, [onPress]);
-
   return (
-    <AnimatedTouchableOpacity
-      activeOpacity={0.75}
-      onPress={handlePress}
-      style={animatedStyle}>
-      <Animated.Image style={styles.icon} source={source} />
-    </AnimatedTouchableOpacity>
+    <TouchableOpacity activeOpacity={0.75} onPress={onPress}>
+      <Image style={styles.icon} source={source} />
+    </TouchableOpacity>
   );
 };
 

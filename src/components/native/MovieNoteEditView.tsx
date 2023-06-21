@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {requireNativeComponent, SafeAreaView, StyleSheet} from 'react-native';
+import {requireNativeComponent, StyleSheet} from 'react-native';
 
 const NoteEditViewNative = requireNativeComponent<{
   text: string;
@@ -16,6 +16,11 @@ type NoteEditView = {
   readonly onClose: () => void;
   readonly onSave: (text: string) => void;
 };
+
+/*
+   Wrapper to Native Platform Views
+   Its a view to edit provided text and it can be returned in onSave method.
+ */
 
 export const NoteEditView: React.FC<NoteEditView> = ({
   text,

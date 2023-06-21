@@ -4,6 +4,7 @@ import {HttpClient} from '@organic/connectivity/client';
 
 import {IMoviesResponse} from '@organic/connectivity/dto/IMovieResponse';
 
+// Pure function used to load movies from api. Has page parameter.
 export async function getMovies(
   page: number,
 ): Promise<AxiosResponse<IMoviesResponse>> {

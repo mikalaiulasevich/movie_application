@@ -3,9 +3,9 @@ import React from 'react';
 import {
   View,
   StyleSheet,
+  FlatList,
   Text,
   Image,
-  FlatList,
   ImageBackground,
   SafeAreaView,
 } from 'react-native';
@@ -19,11 +19,6 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import {IconButton} from '@organic/components/ui/IconButton';
 
-import {
-  HORIZONTAL_ITEM_SIZE_WIDTH,
-  MovieListItemHorizontal,
-} from '@organic/features/movie/components/MovieListItemHorizontal';
-
 import {COLORS, FONTS, PADDINGS} from '@organic/styles/constants';
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from '@organic/styles/dimensions';
 import {ROUTES} from '@organic/navigation/routes';
@@ -31,6 +26,10 @@ import {ROUTES} from '@organic/navigation/routes';
 import {Database} from '@organic/dal/Database';
 import {IMovie} from '@organic/dal/models/movie/interfaces/IMovie';
 import {TABLE_NAMES} from '@organic/dal/Tables';
+import {
+  HORIZONTAL_ITEM_SIZE_WIDTH,
+  MovieListItemHorizontal,
+} from 'features/movie/components/MovieListItemHorizontal';
 
 type SelectedMovieDetailsViewFCProperties = {
   readonly movies: Array<IMovie>;
@@ -46,15 +45,20 @@ const SelectedMovieDetailsViewFC: React.FC<
     [],
   );
 
+  // Navigate to native Platform view.
   const handleEditNotePress = React.useCallback(
     async () =>
       await Navigation.push(componentId, {
         component: {
           name: ROUTES.MOVIE.FEATURE_EDIT_NOTE,
           passProps: {
+            // Text to edit in native view.
             text: movie.overview,
+            // Image which loaded in native view bg and blurs.
             imageUrl: `https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`,
+            // Callback on left button.
             onClose: (): Promise<string> => Navigation.pop(componentId),
+            // Callback on right button.
             onSave: async (
               event: React.SyntheticEvent<{text: string}, {text: string}>,
             ): Promise<void> => {
@@ -71,6 +75,7 @@ const SelectedMovieDetailsViewFC: React.FC<
             topBar: {
               visible: false,
             },
+            // Animation of pop-up transition to native view.
             animations: {
               push: {
                 enabled: true,
@@ -105,6 +110,38 @@ const SelectedMovieDetailsViewFC: React.FC<
         },
       }),
     [movie, componentId],
+  );
+
+  // In this place Memo used to prevent list rerenders when we save edited overview.
+  // Its just a static list formed on firs render.
+  const MemoList = React.useMemo(
+    () => (
+      <FlatList<IMovie>
+        showsHorizontalScrollIndicator={false}
+        style={styles.moviesList}
+        contentContainerStyle={styles.innerContent}
+        data={movies as any}
+        horizontal
+        bounces={false}
+        decelerationRate="normal"
+        // Snap by one element
+        snapToInterval={HORIZONTAL_ITEM_SIZE_WIDTH}
+        snapToAlignment="center"
+        // Horizontal list has only 1 card, and we can reduce initial time to render.
+        maxToRenderPerBatch={1}
+        initialNumToRender={1}
+        scrollEventThrottle={16}
+        renderItem={({item, index}): React.JSX.Element => (
+          <MovieListItemHorizontal
+            componentId={componentId}
+            item={item}
+            index={index}
+          />
+        )}
+        keyExtractor={item => `item_${item.id}`}
+      />
+    ),
+    [],
   );
 
   return (
@@ -150,28 +187,7 @@ const SelectedMovieDetailsViewFC: React.FC<
                 {movie.original_title}
               </Text>
             </View>
-            <View style={styles.listContainer}>
-              <FlatList<IMovie>
-                style={styles.moviesList}
-                contentContainerStyle={styles.innerContent}
-                data={movies as any}
-                horizontal
-                bounces={false}
-                decelerationRate="fast"
-                snapToInterval={HORIZONTAL_ITEM_SIZE_WIDTH}
-                snapToAlignment="start"
-                maxToRenderPerBatch={1}
-                initialNumToRender={1}
-                renderItem={({item, index}): React.JSX.Element => (
-                  <MovieListItemHorizontal
-                    componentId={componentId}
-                    item={item}
-                    index={index}
-                  />
-                )}
-                keyExtractor={item => `item_${item.id}`}
-              />
-            </View>
+            <View style={styles.listContainer}>{MemoList}</View>
           </SafeAreaView>
         </LinearGradient>
       </ImageBackground>

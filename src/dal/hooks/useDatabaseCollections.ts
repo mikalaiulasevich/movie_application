@@ -11,6 +11,7 @@ type DatabaseCollections = {
   readonly db: typeof Database;
 };
 
+// Hook to retrieve db instance and theirs collections.
 export function useDatabaseCollections(): DatabaseCollections {
   return {
     movies: Database.collections.get<IMovie>(TABLE_NAMES.MOVIE),

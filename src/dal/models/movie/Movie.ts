@@ -1,11 +1,12 @@
 import {Model, TableName} from '@nozbe/watermelondb';
 
-import {field, text, readonly} from '@nozbe/watermelondb/decorators';
+import {field, readonly} from '@nozbe/watermelondb/decorators';
 
 import {TABLE_NAMES} from '@organic/dal/Tables';
 
 import {IMovie} from '@organic/dal/models/movie/interfaces/IMovie';
 
+// Database model of Movie
 export class Movie extends Model implements IMovie {
   public static table: TableName<Model> = TABLE_NAMES.MOVIE;
 
@@ -48,7 +49,4 @@ export class Movie extends Model implements IMovie {
   @field('genres')
   @readonly
   public genres: string;
-
-  @text('text')
-  public text: string;
 }

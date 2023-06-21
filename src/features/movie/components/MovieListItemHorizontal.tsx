@@ -6,12 +6,12 @@ import take from 'lodash/take';
 import {Navigation} from 'react-native-navigation';
 
 import {
-  View,
-  Text,
   ImageBackground,
-  Image,
   StyleSheet,
+  Image,
+  Text,
   TouchableOpacity,
+  View,
 } from 'react-native';
 
 import Dayjs from 'dayjs';

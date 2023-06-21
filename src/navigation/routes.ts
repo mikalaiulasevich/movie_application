@@ -1,3 +1,7 @@
+/*
+    Our routes mapping
+ */
+
 export enum BOOTSTRAP_ROUTES {
   FEATURE_BOOTSTRAP = 'FEATURE_BOOTSTRAP',
 }

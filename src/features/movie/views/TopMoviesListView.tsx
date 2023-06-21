@@ -25,6 +25,7 @@ const TopMoviesListViewFC: React.FC<TopMoviesListViewFCProperties> = ({
 }): React.JSX.Element => {
   const {isLoading, getNewMovies} = useMovies();
 
+  // Infinity loader impl
   const handleLoadMore = React.useCallback(() => getNewMovies(), []);
 
   return (

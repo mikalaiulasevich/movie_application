@@ -10,12 +10,20 @@ import {
 
 import {SCREEN_HEIGHT} from '@organic/styles/dimensions';
 
+/*
+   Animation of ROWS sliding duration.
+ */
 const ROW_ANIMATION_DURATION_MS = 55000;
 
 type PosterAnimationStylesProperties = {
   readonly even: object;
   readonly odd: object;
 };
+
+/*
+   Function to build posters animation.
+   We animate odd and even slides in different directions.
+ */
 
 export function usePostersAnimation(): PosterAnimationStylesProperties {
   const translateYForOdd = useSharedValue(-SCREEN_HEIGHT / 2);

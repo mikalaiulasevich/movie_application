@@ -29,11 +29,9 @@ public class MainApplication extends NavigationApplication {
                 protected List<ReactPackage> getPackages() {
                     @SuppressWarnings("UnnecessaryLocalVariable")
                     List<ReactPackage> packages = new PackageList(this).getPackages();
-                    // Packages that cannot be autolinked yet can be added manually here, for example:
-                    // packages.add(new MyReactNativePackage());
-                    packages.add(new TestPackage());
+                    packages.add(new NoteEditPackage());
 
-          return packages;
+                    return packages;
                 }
 
                 @Override

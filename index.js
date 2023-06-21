@@ -9,41 +9,51 @@ import {NoteEditView} from 'components/native/MovieNoteEditView';
 
 import {ROUTES} from 'navigation/routes';
 
+/*
+    Navigation registration:
+        In this place we need to register all our Views
+ */
+
 Navigation.registerComponent(
-    ROUTES.BOOTSTRAP.FEATURE_BOOTSTRAP,
-    () => ApplicationBootstrapView,
+  ROUTES.BOOTSTRAP.FEATURE_BOOTSTRAP,
+  () => ApplicationBootstrapView,
 );
 
 Navigation.registerComponent(
-    ROUTES.MOVIE.FEATURE_MOVIE_LIST,
-    () => TopMoviesListView,
+  ROUTES.MOVIE.FEATURE_MOVIE_LIST,
+  () => TopMoviesListView,
 );
 Navigation.registerComponent(
-    ROUTES.MOVIE.FEATURE_MOVIE_DETAILS,
-    () => SelectedMovieDetailsView,
+  ROUTES.MOVIE.FEATURE_MOVIE_DETAILS,
+  () => SelectedMovieDetailsView,
 );
 Navigation.registerComponent(
-    ROUTES.MOVIE.FEATURE_EDIT_NOTE,
-    () => NoteEditView,
+  ROUTES.MOVIE.FEATURE_EDIT_NOTE,
+  () => NoteEditView,
 );
+
+/*
+    Navigation launch:
+        In this place we need to pass our root view
+ */
 
 Navigation.events().registerAppLaunchedListener(async () => {
-    await Navigation.setRoot({
-        root: {
-            stack: {
-                children: [
-                    {
-                        component: {
-                            name: ROUTES.BOOTSTRAP.FEATURE_BOOTSTRAP,
-                            options: {
-                                topBar: {
-                                    visible: false,
-                                },
-                            },
-                        },
-                    },
-                ],
+  await Navigation.setRoot({
+    root: {
+      stack: {
+        children: [
+          {
+            component: {
+              name: ROUTES.BOOTSTRAP.FEATURE_BOOTSTRAP,
+              options: {
+                topBar: {
+                  visible: false,
+                },
+              },
             },
-        },
-    });
+          },
+        ],
+      },
+    },
+  });
 });

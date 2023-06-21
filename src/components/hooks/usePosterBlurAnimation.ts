@@ -12,6 +12,12 @@ type PosterAnimationStylesProperties = {
   readonly blur: Partial<{blurRadius: number}>;
 };
 
+/*
+   Hook for build blur animation reducer.
+   Currently NOT using in application.
+   Lets wait for future.
+ */
+
 export function usePosterBlurAnimation(): PosterAnimationStylesProperties {
   const blurAmountForPoster = useSharedValue(0);
 

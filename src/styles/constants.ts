@@ -1,3 +1,7 @@
+/*
+    Some useful constants to build styles and so on.
+ */
+
 export const COLORS = {
   WHITE_COLOR: '#FFFFFF',
   GRAY_COLOR: '#999999',

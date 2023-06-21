@@ -35,6 +35,10 @@ const POSTER_IMAGES = [
   require('@organic/assets/images/posters/32.jpg'),
 ];
 
+/*
+   Function to get required image by index in Array.
+ */
+
 export function getImageByIndex(index: number = 0): ImageSourcePropType {
   return POSTER_IMAGES[index];
 }

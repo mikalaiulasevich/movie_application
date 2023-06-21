@@ -16,6 +16,11 @@ import {SCREEN_HEIGHT, SCREEN_WIDTH} from '@organic/styles/dimensions';
 const POSTER_ROWS: number = 4;
 const POSTERS_PER_ROW: number = 8;
 
+/*
+   Component to render posters.
+   Splits by rows and columns.
+   Current impl links to getImageByIndex function. And if we need more than 32 images. Need to add its to array.
+ */
 export const MoviePosters = () => {
   const {even, odd} = usePostersAnimation();
   return (

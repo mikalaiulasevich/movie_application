@@ -19,6 +19,9 @@ const STROKE_WIDTH: number = SIZE / 4;
 
 const AnimatedSvgCircle = Animated.createAnimatedComponent(Circle);
 
+/*
+  Impl of Radial Loader
+ */
 export const RadialLoader: React.FC = (): React.JSX.Element => {
   const radius: number = SIZE / 2 - STROKE_WIDTH / 2;
   const circumference: number = 2 * Math.PI * radius;
@@ -26,6 +29,7 @@ export const RadialLoader: React.FC = (): React.JSX.Element => {
   const animatedProgress = useSharedValue(0);
 
   React.useEffect(() => {
+    // Infinity animation with linear easing and 5sec cycle
     animatedProgress.value = withRepeat(
       withTiming(5, {
         duration: 5000,
@@ -37,6 +41,7 @@ export const RadialLoader: React.FC = (): React.JSX.Element => {
   }, [animatedProgress]);
 
   const animatedStyleForCircle = useAnimatedStyle(() => {
+    // this function calculate strokeDashoffset based on current progress of animation started in upper effect
     return {
       strokeDashoffset: circumference * (1 - animatedProgress.value),
     } as any;

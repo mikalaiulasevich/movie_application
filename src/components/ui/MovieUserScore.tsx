@@ -1,7 +1,5 @@
 import React from 'react';
 
-import {View, StyleSheet} from 'react-native';
-
 import {Svg, Circle, Text} from 'react-native-svg';
 
 import {COLORS} from '@organic/styles/constants';
@@ -102,10 +100,3 @@ function getScoreColor(score: Nullable<number>): {main: string; outer: string} {
       return defaultPallete;
   }
 }
-
-const styles = StyleSheet.create({
-  svgContainer: {
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-  },
-});
