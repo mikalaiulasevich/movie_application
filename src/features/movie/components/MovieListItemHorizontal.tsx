@@ -77,11 +77,6 @@ export const MovieListItemHorizontal: React.FC<MovieListItemHorizontalProperties
               push: {
                 sharedElementTransitions: [
                   {
-                    fromId: `backdrop_image_${item.id}`,
-                    toId: `backdrop_image_${item.id}_destination`,
-                    interpolation: {type: 'linear'},
-                  },
-                  {
                     fromId: `poster_image_${item.id}`,
                     toId: `poster_image_${item.id}_destination`,
                     interpolation: {type: 'linear'},
