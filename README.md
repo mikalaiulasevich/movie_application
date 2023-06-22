@@ -8,5 +8,5 @@ Steps:
 
 Short demo:
 
-https://github.com/mikalaiulasevich/movie_application/assets/10455490/ee23fb2b-beef-4f4b-84dd-272878abfa68
+https://github.com/mikalaiulasevich/movie_application/assets/10455490/586d3d8d-3d12-49d6-afc5-074c6b768a17
 
