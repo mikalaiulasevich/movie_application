@@ -155,7 +155,7 @@ const SelectedMovieDetailsViewFC: React.FC<
     <View style={styles.viewContainer}>
       <ImageBackground
         nativeID={`backdrop_image_${movie.id}_destination`}
-        blurRadius={20}
+        blurRadius={50}
         style={styles.movieBackdrop}
         source={{
           uri: getBackdropImageSourceURIFromMovie(movie),

@@ -70,11 +70,6 @@ export const MovieListItem: React.FC<MovieListItemProperties> = React.memo(
               push: {
                 sharedElementTransitions: [
                   {
-                    fromId: `backdrop_image_${item.id}`,
-                    toId: `backdrop_image_${item.id}_destination`,
-                    interpolation: {type: 'linear'},
-                  },
-                  {
                     fromId: `poster_image_${item.id}`,
                     toId: `poster_image_${item.id}_destination`,
                     interpolation: {type: 'linear'},
@@ -105,7 +100,7 @@ export const MovieListItem: React.FC<MovieListItemProperties> = React.memo(
     const RightContainer = (
       <ImageBackground
         nativeID={`backdrop_image_${item.id}`}
-        blurRadius={10}
+        blurRadius={50}
         imageStyle={styles.movieDetails}
         source={{
           uri: getBackdropImageSourceURIFromMovie(item),

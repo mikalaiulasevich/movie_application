@@ -4,4 +4,5 @@ import {Schema} from '@organic/dal/Schema';
 
 export const Adapter: SQLiteAdapter = new SQLiteAdapter({
   schema: Schema,
+  dbName: 'test',
 });
