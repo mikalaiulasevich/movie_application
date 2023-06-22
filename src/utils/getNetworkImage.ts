@@ -37,7 +37,7 @@ export function getBackdropImageSourceURIFromMovie(movie: IMovie): string {
   if (movie.local_backdrop_path) {
     return getLocalUrl(movie.local_backdrop_path);
   } else {
-    return movie.backdrop_path;
+    return `https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`;
   }
 }
 
@@ -46,6 +46,6 @@ export function getPosterImageSourceURIFromMovie(movie: IMovie): string {
   if (movie.local_poster_path) {
     return getLocalUrl(movie.local_poster_path);
   } else {
-    return movie.poster_path;
+    return `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
   }
 }

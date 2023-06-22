@@ -22,6 +22,7 @@ import Animated, {SlideInDown} from 'react-native-reanimated';
 import {IMovie} from '@organic/dal/models/movie/interfaces/IMovie';
 
 import {MovieUserScore} from '@organic/components/ui/MovieUserScore';
+import {PersistedIcon} from '@organic/components/ui/PersistedIcon';
 import {GenreChip} from '@organic/components/ui/GenreChip';
 
 import {COLORS, FONTS} from '@organic/styles/constants';
@@ -47,6 +48,7 @@ export const MovieListItem: React.FC<MovieListItemProperties> = React.memo(
 
     const animationDelay: number = index >= 3 ? 0 : index * 350;
 
+    // Animation need only for 3 first elements.
     const animation = React.useMemo(() => {
       if (index <= 3) {
         return SlideInDown.duration(1200).delay(animationDelay);
@@ -87,6 +89,9 @@ export const MovieListItem: React.FC<MovieListItemProperties> = React.memo(
 
     const LeftContainer: React.JSX.Element = (
       <View style={styles.leftContainer}>
+        <View style={styles.persistenceIcon}>
+          <PersistedIcon movie={item} />
+        </View>
         <Image
           nativeID={`poster_image_${item.id}`}
           style={styles.rowImage}
@@ -204,6 +209,12 @@ const styles = StyleSheet.create({
   leftContainer: {
     borderRightWidth: 2,
     borderRightColor: COLORS.BORDER_COLOR,
+  },
+  persistenceIcon: {
+    position: 'absolute',
+    top: 10,
+    left: 10,
+    zIndex: 2000,
   },
   rowTitle: {
     fontFamily: FONTS.FAMILY,

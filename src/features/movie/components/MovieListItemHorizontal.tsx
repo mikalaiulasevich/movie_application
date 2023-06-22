@@ -22,6 +22,7 @@ import Animated, {SlideInRight} from 'react-native-reanimated';
 import {IMovie} from '@organic/dal/models/movie/interfaces/IMovie';
 
 import {MovieUserScore} from '@organic/components/ui/MovieUserScore';
+import {PersistedIcon} from '@organic/components/ui/PersistedIcon';
 import {GenreChip} from '@organic/components/ui/GenreChip';
 
 import {COLORS, FONTS} from '@organic/styles/constants';
@@ -54,6 +55,7 @@ export const MovieListItemHorizontal: React.FC<MovieListItemHorizontalProperties
   React.memo(({item, index, componentId}) => {
     const genres: Array<string> = split(item.genres, ',');
 
+    // Animation need only for first element.
     const animation = React.useMemo(() => {
       if (index <= 1) {
         return SlideInRight.duration(1200).delay(350);
@@ -94,6 +96,9 @@ export const MovieListItemHorizontal: React.FC<MovieListItemHorizontalProperties
 
     const LeftContainer: React.JSX.Element = (
       <View style={styles.leftContainer}>
+        <View style={styles.persistenceIcon}>
+          <PersistedIcon movie={item} />
+        </View>
         <Image
           nativeID={`poster_image_${item.id}`}
           style={styles.rowImage}
@@ -207,6 +212,12 @@ const styles = StyleSheet.create({
   leftContainer: {
     borderRightWidth: BORDER_WIDTH,
     borderRightColor: COLORS.BORDER_COLOR,
+  },
+  persistenceIcon: {
+    position: 'absolute',
+    top: 10,
+    left: 10,
+    zIndex: 2000,
   },
   rowTitle: {
     fontFamily: FONTS.FAMILY,
